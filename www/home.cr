@@ -5,7 +5,6 @@ begin
     ENV["LISTEN_PORT"] ||= "8080"
     server = HTTP::Server.new do |context|
       context.response.content_type = "text/plain"
-
       context.response.print "HTTP Path: #{context.request.path}\n"
       context.response.print "HTTP Body: #{context.request.body}\n"
       context.response.print "Headers:\n"
@@ -20,4 +19,3 @@ rescue ex
     puts "#{ex.backtrace}"
     exit 1
 end
-
