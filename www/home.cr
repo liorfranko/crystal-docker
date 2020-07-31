@@ -1,9 +1,12 @@
 require "http/server"
 begin
-    puts "Started http server"
+    puts "Starting http server"
     ENV["LISTEN_ADDR"] ||= "127.0.0.1"
     ENV["LISTEN_PORT"] ||= "8080"
-    server = HTTP::Server.new do |context|
+    server = HTTP::Server.new([
+      HTTP::ErrorHandler.new,
+      HTTP::LogHandler.new
+    ]) do |context|
       context.response.content_type = "text/plain"
       context.response.print "HTTP Path: #{context.request.path}\n"
       context.response.print "HTTP Body: #{context.request.body}\n"
