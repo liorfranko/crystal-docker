@@ -8,12 +8,12 @@ begin
       HTTP::LogHandler.new
     ]) do |context|
       context.response.content_type = "text/plain"
-      puts "Request path is:"
-      pp context.request.path
-      puts "Request body is:"
-      pp context.request.body
-      puts "Request header are:"
-      pp context.request.headers
+      # puts "Request path is:"
+      # pp context.request.path
+      # puts "Request body is:"
+      # pp context.request.body
+      # puts "Request header are:"
+      # pp context.request.headers
       context.response.print "HTTP Path: #{context.request.path}\n"
       context.response.print "HTTP Body: #{context.request.body}\n"
       context.response.print "Headers:\n"
