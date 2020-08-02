@@ -1,6 +1,5 @@
 # shellcheck disable=SC2128
 CODE_LOCATION=$(echo "$BASH_SOURCE" | awk -F 'crystal-docker' '{print $1 }')
-docker build -t crystal_docker "$CODE_LOCATION/crystal-docker/"
-docker run -it -p 8080:8080 -v "$CODE_LOCATION/crystal-docker/www:/usr/local/src/" crystal_docker
-
-
+docker build -t liorf1/crystal_docker:v1 "$CODE_LOCATION/crystal-docker/"
+# docker run -it -p 80:80 liorf1/crystal_docker:v1
+docker push liorf1/crystal_docker:v1

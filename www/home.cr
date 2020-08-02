@@ -1,19 +1,19 @@
 require "http/server"
 begin
     puts "Starting http server"
-    ENV["LISTEN_ADDR"] ||= "127.0.0.1"
-    ENV["LISTEN_PORT"] ||= "8080"
+    ENV["LISTEN_ADDR"] ||= "0.0.0.0"
+    ENV["LISTEN_PORT"] ||= "80"
     server = HTTP::Server.new([
       HTTP::ErrorHandler.new,
       HTTP::LogHandler.new
     ]) do |context|
       context.response.content_type = "text/plain"
-      # puts "Request path is:"
-      # pp context.request.path
-      # puts "Request body is:"
-      # pp context.request.body
-      # puts "Request header are:"
-      # pp context.request.headers
+      puts "Request path is:"
+      pp context.request.path
+      puts "Request body is:"
+      pp context.request.body
+      puts "Request header are:"
+      pp context.request.headers
       context.response.print "HTTP Path: #{context.request.path}\n"
       context.response.print "HTTP Body: #{context.request.body}\n"
       context.response.print "Headers:\n"
