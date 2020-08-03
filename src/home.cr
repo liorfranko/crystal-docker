@@ -12,6 +12,8 @@ begin
       HTTP::LogHandler.new
     ]) do |context|
       context.response.content_type = "text/plain"
+
+      # Route base the http path
       case context.request.path
       when "/health"
         context.response.print "ok"
@@ -44,6 +46,10 @@ begin
           end
           context.response.print "\n"
         end
+        
+        
+        
+        # Print the json link
         context.response.print "\n"
         if context.request.headers.has_key?("Host")
           if ENV["LISTEN_PORT"] == "80"
