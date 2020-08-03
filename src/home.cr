@@ -1,10 +1,12 @@
 require "http/server"
 require "json"
+# Set required vars, either to default or from ENV
 ENV["LISTEN_ADDR"] ||= "0.0.0.0"
 ENV["LISTEN_PORT"] ||= "80"
 
 begin
     puts "Starting http server"
+    
     server = HTTP::Server.new([
       HTTP::ErrorHandler.new,
       HTTP::LogHandler.new
